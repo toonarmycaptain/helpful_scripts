@@ -39,3 +39,38 @@ def sentence_to_test_class_name(sentence):
 def sentence_to_test_function_name(sentence):
     function_name = sentence_to_function_name(sentence)
     return function_name_to_test_function_name(function_name)
+
+
+def list_functions_in_module(module_name):
+    """
+    Returns a list of functions in the given module.
+    Returns a warning if module is not currently imported.
+    """
+    try:
+        function_list = [func for func in dir(module_name) if '__' not in func]
+    except NameError:
+        return f'Module is not in current namespace, please import {module_name}'
+    return function_list
+
+
+def module_functions_to_test_class_names(module_name):
+    module_test_class_names = []
+    for function_name in list_functions_in_module(module_name):
+        test_class_name = function_name_to_test_class_name(function_name)
+        module_test_class_names.append(test_class_name)
+    return module_test_class_names
+
+
+def module_functions_to_test_function_names(module_name):
+    module_test_function_names = []
+    for function_name in list_functions_in_module(module_name):
+        test_function_name = function_name_to_test_function_name(function_name)
+        module_test_function_names.append(test_function_name)
+    return module_test_function_names
+
+
+def print_test_class_test_func_name_for_module(module_name):
+    module_test_class_names = module_functions_to_test_class_names(module_name)
+    module_test_function_names = module_functions_to_test_function_names(module_name)
+    for function in range(len(module_test_class_names)):
+        print(f'{module_test_class_names[function]}, {module_test_function_names[function]}')

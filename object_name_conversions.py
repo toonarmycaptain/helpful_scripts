@@ -11,9 +11,11 @@ def function_name_to_class_name(function_name):
     rejoined = ''.join(function_list)
     return rejoined
 
+
 def function_name_to_test_class_name(function_name):
     test_class_name = 'Test' + function_name_to_class_name(function_name)
     return test_class_name
+
 
 def function_name_to_test_function_name(function_name):
     test_function_name = 'test_' + function_name
@@ -32,6 +34,7 @@ def sentence_to_class_name(sentence):
 def sentence_to_test_class_name(sentence):
     func_form = sentence_to_function_name(sentence)
     return function_name_to_test_class_name(func_form)
+
 
 def sentence_to_test_function_name(sentence):
     function_name = sentence_to_function_name(sentence)

@@ -1,0 +1,10 @@
+[run]
+
+include = /home/travis/build/toonarmycaptain/helpful_scripts/*
+
+omit =
+     *.yml
+     *.md
+     tests/*
+     venv/*
+     helpful_scripts_env/*
